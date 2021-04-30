@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { selectRoomId } from "../features/appSlice";
 import ChatInput from "./ChatInput";
-import { useCollection } from "react-firebase-hooks/firestore";
 
 const ChatContainer = styled.div`
   flex: 0.7;

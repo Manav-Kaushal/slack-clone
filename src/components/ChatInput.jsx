@@ -1,9 +1,8 @@
 import { Button } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { db } from "../firebase";
 import firebase from "firebase";
-import { SettingsInputAntenna } from "@material-ui/icons";
 
 const ChatInputContainer = styled.div`
   border-radius: 20px;
