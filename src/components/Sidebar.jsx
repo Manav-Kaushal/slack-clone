@@ -14,7 +14,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import SidebarOption from "./SidebarOption";
 import { useCollection } from "react-firebase-hooks/firestore";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const SidebarContainer = styled.div`
   background-color: var(--slack-color);
@@ -69,7 +70,8 @@ const SidebarInfo = styled.div`
 `;
 
 function Sidebar() {
-  const [channels, loading, error] = useCollection(db.collection("rooms"));
+  const [channels] = useCollection(db.collection("rooms"));
+  const [user] = useAuthState(auth);
 
   console.log(channels);
 
@@ -80,7 +82,7 @@ function Sidebar() {
           <h2>Frontend Tech</h2>
           <h3>
             <FiberManualRecordIcon />
-            Manav Kaushal
+            {user.displayName}
           </h3>
         </SidebarInfo>
         <CreateIcon />
@@ -100,11 +102,7 @@ function Sidebar() {
       <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
 
       {channels?.docs.map((doc) => (
-        <SidebarOption
-          key={doc.id}
-          id={doc.id}
-          title={doc.data().name}
-        />
+        <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
       ))}
     </SidebarContainer>
   );

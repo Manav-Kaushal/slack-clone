@@ -8,14 +8,32 @@ import Chat from "./components/Chat";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import Login from "./components/Login";
+import Spinner from "react-spinkit";
 
 const AppBody = styled.div`
   display: flex;
   height: 100vh;
 `;
 
+const AppLoading = styled.div``;
+
+const AppLoadingContents = styled.div``;
+
 function App() {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return (
+      <AppLoading>
+        <AppLoadingContents>
+          <img
+            src="https://cdn.mos.cms.futurecdn.net/SDDw7CnuoUGax6x9mTo7dd.jpg"
+            alt="Slack logo"
+          />
+        </AppLoadingContents>
+      </AppLoading>
+    );
+  }
 
   return (
     <div className="app">
