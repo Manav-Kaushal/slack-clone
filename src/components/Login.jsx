@@ -45,7 +45,6 @@ function Login() {
           alt=""
         />
         <h1>Sign in to Slack 2.0</h1>
-        <p>manav.slack.com</p>
         <Button onClick={signIn}>Sign in with Google</Button>
       </LoginInnerContainer>
     </LoginContainer>
