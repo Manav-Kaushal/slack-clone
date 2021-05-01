@@ -79,7 +79,7 @@ function Sidebar() {
     <SidebarContainer>
       <SidebarHeader>
         <SidebarInfo>
-          <h2>Frontend Tech</h2>
+          <h2>Welcome to Slack 2.0</h2>
           <h3>
             <FiberManualRecordIcon />
             {user.displayName}
